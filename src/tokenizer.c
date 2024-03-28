@@ -89,12 +89,13 @@ char **tokenize(char* str)
   char **tokens = malloc((strLngth+1) * sizeof(char*));
   int length;
   int i;
+  char *tp = str;
   for(i = 0; i < strLngth; i++)
     {
-      str = token_start(str); //finding start of token
-      length = token_length(str); //calling my created function
-      tokens[i] = copy_str(str, length); //copyiny into tokens
-      str = token_terminator(str); // terminating and jumping to next token
+      tp = token_start(tp); //finding start of token
+      length = token_length(tp); //calling my created function
+      tokens[i] = copy_str(tp, length); //copyiny into tokens
+      tp = token_terminator(tp); // terminating and jumping to next token
     }
   tokens[i] = 0;
   return tokens;
