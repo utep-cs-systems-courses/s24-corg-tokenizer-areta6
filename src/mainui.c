@@ -30,7 +30,7 @@ int main()
 	  printf("passed tokenize(input)\n");
 	  print_tokens(tokens);
 	  printf("passed print_tokens");
-	  add_history(history,input); //send sentence to history
+	  //add_history(history,input); //send sentence to history
 	  printf("passed add_history");
 	  free_tokens(tokens); //freeing tokens as to not overload memory
 	}
