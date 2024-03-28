@@ -3,7 +3,7 @@
 #include "tokenizer.h"
 #include "history.h"
 
-
+void token_to_history(List * history, char **tokens);
 //very simple ui that asks for inputs and meets requirments
 
 int main()

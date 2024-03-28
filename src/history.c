@@ -47,8 +47,8 @@ void print_history(List *list)
   Item *temp = list->root->next; //making sure the history starts on the right node
   while(temp != 0) //traversing list like before
     {
-      printf("%d: %s\n", temp->id, temp->str); //printing id and str for all nodes
-      temp->next;
+      printf("%d. %s\n", temp->id, temp->str); //printing id and str for all nodes (found the bug that kept making me stuck i had %d: instead of %d. which lead to infinite loops (T_T))
+      temp = temp->next;
     }
   printf("\n");
 }
