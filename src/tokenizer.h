@@ -47,6 +47,8 @@ void free_tokens(char **tokens);
 //adding a new entry here for myself to help with tokenizing
 int token_length(char *str); //returns the length of a token that is given 
 
+//another addition to fix the looping error in history.c in add_history
+short str_length(char *str);
 
 
 #endif

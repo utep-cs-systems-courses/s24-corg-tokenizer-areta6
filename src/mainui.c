@@ -24,14 +24,14 @@ int main()
 	{
 	  printf("\n you selected 't' \n Please enter a sentence here:");
 	  fgets(input, 100, stdin);
-	  printf("passed fgets\n");
+	  //printf("passed fgets\n");
 	  char **tokens = tokenize(input);
 	  printf("\n");
-	  printf("passed tokenize(input)\n");
+	  //printf("passed tokenize(input)\n");
 	  print_tokens(tokens);
-	  printf("passed print_tokens");
-	  //add_history(history,input); //send sentence to history
-	  printf("passed add_history");
+	  //printf("passed print_tokens");
+	  add_history(history,input); //send sentence to history
+	  //printf("passed add_history");
 	  free_tokens(tokens); //freeing tokens as to not overload memory
 	}
       else if(input[0] == 'h')//history
