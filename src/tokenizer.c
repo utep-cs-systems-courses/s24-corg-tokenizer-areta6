@@ -74,20 +74,54 @@ int count_tokens(char *str)
 char copy_str(char *inStr, short len)
 {
   int i = 0;
-  
+  char *copiedString = malloc((len+1) *sizeof(char)); //copying the string given (copied over from demo code)
+  for(i = 0; i < len; i++)
+    {
+      copiedString[i] = inStr[i];
+    }
+  copiedString[i]='\0'; //once it reaches the end of the copied string it will give a 0 for zero-termination
+  return copiedString;
 }
 
 char **tokenize(char* str)
 {
-  
+  int strLngth = count_tokens(str); //length of given str so i can use copy_str later
+  char **tokens = malloc((strLngth+1) * sizeof(char*));
+  int length;
+  for(int i = 0; i < strLngth; i++)
+    {
+      str = token_start(str); //finding start of token
+      length = token_length(str); //calling my created function
+      tokens[i] = copy_str(str, length); //copyiny into tokens
+      str = token_terminator(str); // terminating and jumping to next token
+    }
 }
 
 void print_tokens(char **tokens)
 {
-  
+  int i = 0;
+  while (tokens[i]) //prints tokens till tokens[i] contains nothing 
+    {
+      printf("%s\n" tokens[i]);
+    }
 }
 
 void free_tokens(char **tokens)
 {
-  
+  for(int 1 = 0; tokens[i] != 0; i++)
+    {
+      free(tokens[i]); //freeing contents in tokens[i]
+    }
+  free(tokens); //freeing tokens
 }
+
+// got help for this one this will be used to help build the tokenizer
+int token_length(char *str)
+{
+  char *strt = token_start(str); //getting starting position
+  char *end = token_terminator(strt); //getting ending position
+  int length = 0; 
+  length = end - strt; //subtracting the values to get length 
+  return length;
+}
+
