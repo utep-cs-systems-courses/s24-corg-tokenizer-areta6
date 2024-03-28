@@ -71,7 +71,7 @@ int count_tokens(char *str)
 
 //returns allcated new zero-terminated string
 //conatins len chars from instr
-char copy_str(char *inStr, short len)
+char *copy_str(char *inStr, short len)
 {
   int i = 0;
   char *copiedString = malloc((len+1) *sizeof(char)); //copying the string given (copied over from demo code)
@@ -88,13 +88,16 @@ char **tokenize(char* str)
   int strLngth = count_tokens(str); //length of given str so i can use copy_str later
   char **tokens = malloc((strLngth+1) * sizeof(char*));
   int length;
-  for(int i = 0; i < strLngth; i++)
+  int i;
+  for(i = 0; i < strLngth; i++)
     {
       str = token_start(str); //finding start of token
       length = token_length(str); //calling my created function
       tokens[i] = copy_str(str, length); //copyiny into tokens
       str = token_terminator(str); // terminating and jumping to next token
     }
+  tokens[i] = 0;
+  return tokens;
 }
 
 void print_tokens(char **tokens)
@@ -102,13 +105,14 @@ void print_tokens(char **tokens)
   int i = 0;
   while (tokens[i]) //prints tokens till tokens[i] contains nothing 
     {
-      printf("%s\n" tokens[i]);
+      printf("%s\n",tokens[i]);
     }
 }
 
 void free_tokens(char **tokens)
 {
-  for(int 1 = 0; tokens[i] != 0; i++)
+  int i;
+  for(i = 0; tokens[i] != 0; i++)
     {
       free(tokens[i]); //freeing contents in tokens[i]
     }
